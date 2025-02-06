@@ -4,7 +4,6 @@ const Category = require("../db/category")
 
 
 async function addCategory(model) {
-    console.log("Model name:",model)
     let category = new Category({
         name: model
     });
@@ -13,7 +12,6 @@ async function addCategory(model) {
 }
 
 async function updateCategory(id, model) {
-    console.log("Update category: ",model)
     await Category.findOneAndUpdate({ _id: id },
      {
         name: model

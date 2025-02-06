@@ -6,7 +6,6 @@ const { addCategory, updateCategory, deleteCategory } = require('../handlers/cat
 // post request
 router.post("", async (req, res) => {
     try {
-        console.log("Body:", req.body);
 
         const { name } = req.body;
         if (!name) {
@@ -29,7 +28,6 @@ router.post("", async (req, res) => {
 // put request
 router.put("/:id", async (req, res) => {
     try {
-        console.log("Updating Category:", req.params.id, "with data:", req.body.name);
 
         const { id } = req.params;
         const { name } = req.body;
@@ -56,7 +54,6 @@ router.put("/:id", async (req, res) => {
 // delete request
 router.delete("/:id", async (req, res) => {
     try {
-        console.log("Updating Category:", req.params.id, "with data:", req.body.name);
 
         const { id } = req.params;
 
