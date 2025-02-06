@@ -6,7 +6,7 @@ const { addCategory, updateCategory, deleteCategory } = require('../handlers/cat
 // post request
 router.post("", async (req, res) => {
     try {
-        console.log("Body:", req.body.name);
+        console.log("Body:", req.body);
 
         const { name } = req.body;
         if (!name) {
