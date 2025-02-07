@@ -2,6 +2,10 @@ const { model } = require("mongoose")
 const Category = require("../db/category")
 
 
+async function getCategory() {
+    let categories =await Category.find();
+    return categories.map(c=>c.toObject());
+}
 
 async function addCategory(model) {
     let category = new Category({
@@ -25,4 +29,4 @@ async function deleteCategory(id) {
     return 200;
 }
 
-module.exports = { addCategory, updateCategory,deleteCategory }
+module.exports = { addCategory, updateCategory,deleteCategory,getCategory }
