@@ -3,6 +3,9 @@ const mongoose = require("mongoose")
 const app = express();
 const categoryRoutes = require("./routes/category");
 const port = 3000;
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(express.json())
 app.get("/",(req,res)=>{
