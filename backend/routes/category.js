@@ -15,7 +15,7 @@ router.get("", async (req, res) => {
         }
     } catch (error) {
         console.error("Error fetching categories:", error);
-        return res.status(500).json({ message: "Internal server error." });
+        return res.status(500).json({ status:500,message: "Internal server error." });
     }
 });
 
@@ -27,14 +27,14 @@ router.post("", async (req, res) => {
 
         const { name } = req.body;
         if (!name) {
-            return res.status(400).json({ error: "Category name is required" });
+            return res.status(400).json({ status:400,error: "Category name is required" });
         }
 
         let result =await addCategory(name);
 
         // res.send(result);
         if(result){
-        return res.status(200).json({ message: "Category added sucessfully." });
+        return res.status(200).json({ status:200,message: "Category added sucessfully." });
 
         }
     } catch (error) {
@@ -51,17 +51,17 @@ router.put("/:id", async (req, res) => {
         const { name } = req.body;
 
         if (!name) {
-            return res.status(400).json({ error: "Category name is required" });
+            return res.status(400).json({ status:400,error: "Category name is required" });
         }
 
         let result =await updateCategory(id,name);
 
         if (!result) {
-            return res.status(404).json({ error: "Category not found" });
+            return res.status(404).json({ status:404,error: "Category not found" });
         }
 
         // res.send(result);
-        return res.status(200).json({ message: "Category updated sucessfully." });
+        return res.status(200).json({ status:200,message: "Category updated sucessfully." });
 
     } catch (error) {
         console.error("Error updating category:", error);
@@ -76,17 +76,17 @@ router.delete("/:id", async (req, res) => {
         const { id } = req.params;
 
         if (!id) {
-            return res.status(400).json({ error: "Category not found" });
+            return res.status(400).json({ status:400,error: "Category not found" });
         }
 
         let result =await deleteCategory(id);
 
         if (!result) {
-            return res.status(404).json({ error: "Something went wrong." });
+            return res.status(404).json({ status:404,error: "Something went wrong." });
         }
 
         // res.send(result);
-        return res.status(200).json({ message: "Category deleted sucessfully." });
+        return res.status(200).json({ status:200,message: "Category deleted sucessfully." });
     } catch (error) {
         console.error("Error deleting category:", error);
         res.status(500).json({ error: "Internal server error" });

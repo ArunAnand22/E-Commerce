@@ -2,6 +2,7 @@ import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 import { CategoryService } from '../../../services/category.service';
 
@@ -9,6 +10,7 @@ import { CategoryService } from '../../../services/category.service';
 export interface PeriodicElement {
   position: number;
   name: string;
+  id: string
 }
 
 
@@ -16,12 +18,12 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule,MatIconModule],
+  imports: [MatTableModule, MatPaginatorModule,MatIconModule,RouterLink],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
 export class CategoriesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'actions'];
+  displayedColumns: string[] = ['position', 'name', 'id', 'actions'];
   dataSource = new MatTableDataSource<PeriodicElement>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,6 +34,10 @@ export class CategoriesComponent implements AfterViewInit {
 
 
   constructor() {
+    
+  }
+
+  ngOnInit(){
     this.categoryService.getCategories().subscribe({
       next: (result: any) => {
 
