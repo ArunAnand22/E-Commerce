@@ -19,13 +19,18 @@ export class CategoryService {
     })
   }
 // update category
-  updateCategory(id:any,data:any){
+  updateCategory(id:any,name:any){
     return this.http.put('http://localhost:3000/category/' + id,{
-      name:data.name
+      name:name
     })
   }
 // delete category
   deleteCategory(id:any){
     return this.http.delete('http://localhost:3000/category/' + id)
+  }
+
+  //get category by id
+  getCategoryById(id:any){
+    return this.http.get('http://localhost:3000/category/' + id)
   }
 }

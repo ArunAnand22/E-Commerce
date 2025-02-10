@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Category = require("../db/category");
-const { addCategory, updateCategory, deleteCategory,getCategory } = require('../handlers/category-handler');
+const { addCategory, updateCategory, deleteCategory,getCategory,getCategorybyId } = require('../handlers/category-handler');
 
 //get request
 router.get("", async (req, res) => {
@@ -90,6 +90,23 @@ router.delete("/:id", async (req, res) => {
     } catch (error) {
         console.error("Error deleting category:", error);
         res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+//get category by id
+router.get("/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        let result = await getCategorybyId(id);
+
+        if (result) {
+            return res.status(200).json({ data: result });
+        } else {
+            return res.status(404).json({ message: "No data found." });
+        }
+    } catch (error) {
+        console.error("Error fetching category:", error);
+        return res.status(500).json({ status:500,message: "Internal server error." });
     }
 });
 
