@@ -38,6 +38,10 @@ export class CategoriesComponent implements AfterViewInit {
   }
 
   ngOnInit(){
+    this.getServerData();
+  }
+
+  getServerData(){
     this.categoryService.getCategories().subscribe({
       next: (result: any) => {
 
@@ -67,7 +71,13 @@ export class CategoriesComponent implements AfterViewInit {
   }
   
   deleteCategory(id: string) {
-    console.log("Delete category with ID:", id);
+    this.categoryService.deleteCategory(id).subscribe({
+      next:(result: any) => {
+        this.getServerData();
+      },
+      error:(err: any) => {},
+      complete:() => {}
+    })
   }
   
 }
