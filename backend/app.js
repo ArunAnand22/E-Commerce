@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose")
 const app = express();
 const categoryRoutes = require("./routes/category");
+const brandRoutes = require("./routes/brand")
 const port = 3000;
 const cors = require("cors");
 
@@ -13,6 +14,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/category",categoryRoutes)
+app.use("/brands",brandRoutes)
 
 async function connectDB(){
     await mongoose.connect("mongodb://127.0.0.1:27017",{

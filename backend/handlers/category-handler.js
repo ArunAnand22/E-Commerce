@@ -30,9 +30,7 @@ async function deleteCategory(id) {
 }
 
 async function getCategorybyId(id) {
-    console.log("Id:",id)
     let category =await Category.findOne({_id: id});
-    console.log(category)
 
     return category.toObject();
 }
