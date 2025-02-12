@@ -1,5 +1,5 @@
 <div class="flex flex-col items-center px-40 mt-10">
-    @if(isEdit){<h2>Update Category</h2>}@else{<h2>Add New Category</h2>}
+    @if(isEdit){<h2>Update Brand</h2>}@else{<h2>Add New Brand</h2>}
     <form class="shadow-sm w-96">
         <div class="flex flex-wrap">
             <div class="w-full gap-4">
@@ -10,10 +10,10 @@
             </div>
             <div class="w-full flex justify-center">
                 @if(isEdit){
-                    <button mat-raised-button color="primary" (click)="modify()" [disabled]="isChanged">Update Category</button>
+                    <button mat-raised-button color="primary" (click)="modify()" [disabled]="isChanged">Update Brand</button>
                 }
                 @else{
-                    <button mat-raised-button color="primary" (click)="add()" [disabled]="!name">Add Category</button>
+                    <button mat-raised-button color="primary" (click)="add()" [disabled]="!name">Add Brand</button>
                 }
             </div>
         </div>
